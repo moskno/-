@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>פרטי העיר</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>האם תרצה לגור ב-<span id="city-name"></span>?</h1>
+    </header>
+    <main>
+        <form id="city-form">
+            <label for="street">בחר רחוב:</label>
+            <input type="text" id="street" name="street" placeholder="הקלד את שם הרחוב">
+            <button type="submit">שלח</button>
+        </form>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const cityName = urlParams.get('name');
+            document.getElementById('city-name').innerText = cityName;
+
+            document.getElementById('city-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const street = document.getElementById('street').value;
+                alert(`בחרת לגור ב-${cityName} ברחוב ${street}`);
+            });
+        });
+    </script>
+</body>
+</html>
